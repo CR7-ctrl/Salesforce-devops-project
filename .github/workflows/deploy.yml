@@ -27,7 +27,7 @@ jobs:
           SFDX_AUTH_URL: ${{ secrets.SFDX_AUTH_URL }}
         run: |
           echo "$SFDX_AUTH_URL" > sfdx-auth.json
-          sfdx auth:sfdxurl:store -f sfdx-auth.json -s
+          sfdx force:auth:sfdxurl:store -f sfdx-auth.json -s  # Corrected command
 
       - name: List Authenticated Orgs
         run: sfdx force:org:list  # List orgs to verify authentication
