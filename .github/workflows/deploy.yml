@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3  # Updated to use the latest version
 
       - name: Install Salesforce CLI
         run: |
@@ -22,7 +22,7 @@ jobs:
           SFDX_AUTH_URL: ${{ secrets.SFDX_AUTH_URL }}
         run: |
           echo "$SFDX_AUTH_URL" > sfdx-auth.json
-          sfdx auth:sfdxurl:store --sfdx-url-file sfdx-auth.json --set-default
+          sfdx auth:sfdxurl:store -f sfdx-auth.json -s  # Use updated flag
 
       - name: Deploy to Salesforce Org
         run: |
