@@ -11,12 +11,12 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3  # Still using v3, but this warning will persist until action updates.
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3  # Ensure we use a supported version
+        uses: actions/setup-node@v3
         with:
-          node-version: '20'  # Explicitly set to Node.js 20
+          node-version: '20'
 
       - name: Install Salesforce CLI
         run: |
@@ -27,7 +27,10 @@ jobs:
           SFDX_AUTH_URL: ${{ secrets.SFDX_AUTH_URL }}
         run: |
           echo "$SFDX_AUTH_URL" > sfdx-auth.json
-          sfdx auth:sfdxurl:store -f sfdx-auth.json -s  # Use updated flag
+          sfdx auth:sfdxurl:store -f sfdx-auth.json -s
+
+      - name: List Authenticated Orgs
+        run: sfdx force:org:list  # List orgs to verify authentication
 
       - name: Deploy to Salesforce Org
         run: |
