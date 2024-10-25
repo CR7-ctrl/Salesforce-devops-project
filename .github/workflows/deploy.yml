@@ -22,7 +22,7 @@ jobs:
           SFDX_AUTH_URL: ${{ secrets.SFDX_AUTH_URL }}
         run: |
           echo "$SFDX_AUTH_URL" > sfdx-auth.json
-          sfdx auth:sfdxurl:store --sfdxurlfile sfdx-auth.json --setdefaultusername
+          sfdx auth:sfdxurl:store --sfdx-url-file sfdx-auth.json --set-default
 
       - name: Deploy to Salesforce Org
         run: |
