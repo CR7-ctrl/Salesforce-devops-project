@@ -11,7 +11,12 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3  # Updated to use the latest version
+        uses: actions/checkout@v3  # Still using v3, but this warning will persist until action updates.
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3  # Ensure we use a supported version
+        with:
+          node-version: '20'  # Explicitly set to Node.js 20
 
       - name: Install Salesforce CLI
         run: |
